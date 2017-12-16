@@ -31,7 +31,7 @@
   ],
   "main": "./app",
   "assembly": {
-    "namespace": "opt/gcp/pubsub",
+    "namespace": "ms/opt/gcp/pubsub",
     "components": [
       "broker"
     ]
