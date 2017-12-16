@@ -1,8 +1,12 @@
 exports = module.exports = function(logger) {
-  console.log('GCP BROKER!');
+  var gcp = require('crane-google-cloud-pubsub');
+  
+  var broker = new gcp.Broker();
+  return broker;
 }
 
 exports['@implements'] = [
+  //'http://i.bixbyjs.org/ms/Broker',
   'http://i.bixbyjs.org/opt/gcp/pubsub/Broker'
 ];
 exports['@singleton'] = true;
