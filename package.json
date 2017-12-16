@@ -33,7 +33,8 @@
   "assembly": {
     "namespace": "ms/opt/gcp/pubsub",
     "components": [
-      "broker"
+      "broker",
+      "protocol"
     ]
   },
   "dependencies": {
