@@ -7,7 +7,7 @@ exports = module.exports = function(logger) {
 
 exports['@implements'] = [
   //'http://i.bixbyjs.org/ms/Broker',
-  'http://i.bixbyjs.org/opt/gcp/pubsub/Broker'
+  'http://i.bixbyjs.org/ms/opt/gcp/pubsub/Broker'
 ];
 exports['@singleton'] = true;
 exports['@require'] = [
