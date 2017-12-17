@@ -3,4 +3,4 @@ exports = module.exports = function(logger) {
 }
 
 exports['@implements'] = 'http://i.bixbyjs.org/ms/protocol';
-exports['@name'] = 'gcp-pubsub';
+exports['@name'] = 'gcp.pubsub';
