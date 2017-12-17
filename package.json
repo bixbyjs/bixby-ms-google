@@ -31,10 +31,9 @@
   ],
   "main": "./app",
   "assembly": {
-    "namespace": "ms/opt/gcp/pubsub",
+    "namespace": "ms/opt/gcp",
     "components": [
-      "broker",
-      "protocol"
+      "pubsub/protocol"
     ]
   },
   "dependencies": {

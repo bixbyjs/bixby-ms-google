@@ -1,5 +1,5 @@
 exports = module.exports = function() {
-  return require('../lib/protocol');
+  return require('../../lib/pubsub/protocol');
 }
 
 exports['@singleton'] = true;
