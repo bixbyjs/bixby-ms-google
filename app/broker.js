@@ -1,7 +1,7 @@
 exports = module.exports = function(logger) {
   var gcp = require('crane-google-cloud-pubsub');
   
-  var broker = new gcp.Broker();
+  var broker = new gcp.Connection({ projectId: process.env.GCP_PROJECT_ID });
   return broker;
 }
 
