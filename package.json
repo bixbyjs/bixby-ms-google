@@ -37,7 +37,7 @@
     ]
   },
   "dependencies": {
-    "crane-google-cloud-pubsub": "0"
+    "crane-google-cloud-pubsub": "jaredhanson/crane-google-cloud-pubsub"
   },
   "devDependencies": {
     "make-node": "^0.3.0",
