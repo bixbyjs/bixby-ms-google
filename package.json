@@ -1,7 +1,7 @@
 {
   "name": "bixby-ms-google",
   "version": "0.0.0",
-  "description": "Google Cloud Pub/Sub components for Bixby.js.",
+  "description": "Google Cloud Pub/Sub plugin for use with Bixby.js message services.",
   "keywords": [
     "messaging",
     "mom",
