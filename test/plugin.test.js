@@ -1,30 +1,27 @@
 var $require = require('proxyquire');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var PlugIn = require('../app/plugin');
+var plugin = require('../app/plugin');
 var pubsub = require('crane-gcp-pubsub');
 
 
 describe('plugin', function() {
   
   it('should export constructor', function() {
-    expect(PlugIn).to.be.a('function');
-    expect(PlugIn.name).to.equal('GoogleCloudPubSubPlugIn');
+    expect(plugin).to.be.an('object');
   });
   
   it('should be annotated', function() {
-    expect(PlugIn['@implements']).to.equal('http://i.bixbyjs.org/ms/ProtocolPlugIn');
-    expect(PlugIn['@protocol']).to.equal('https://pubsub.googleapis.com');
+    expect(plugin['@implements']).to.equal('http://i.bixbyjs.org/ms/ProtocolPlugIn');
+    expect(plugin['@protocol']).to.equal('https://pubsub.googleapis.com');
   });
   
   describe('PlugIn', function() {
     
-    describe('#createConnection', function() {
+    describe('.createConnection', function() {
       var ConnectionSpy = sinon.spy(pubsub.Connection);
-      var PlugIn = $require('../app/plugin',
+      var plugin = $require('../app/plugin',
         { 'crane-gcp-pubsub': { Connection: ConnectionSpy } });
-      
-      var plugin = new PlugIn();
       
       describe('with location as string', function() {
         var connection = plugin.createConnection('https://pubsub.googleapis.com/v1/projects/example/topics/hello');
@@ -73,6 +70,6 @@ describe('plugin', function() {
       
     }); // #createConnection
     
-  });
+  }); // PlugIn
   
 });

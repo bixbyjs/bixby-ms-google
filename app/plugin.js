@@ -2,10 +2,7 @@ var uri = require('url')
   , pubsub = require('crane-gcp-pubsub');
 
 
-function GoogleCloudPubSubPlugIn() {
-}
-
-GoogleCloudPubSubPlugIn.prototype.createConnection = function(options) {
+exports.createConnection = function(options) {
   if (typeof options == 'string') {
     options = { url: options };
   }
@@ -22,8 +19,5 @@ GoogleCloudPubSubPlugIn.prototype.createConnection = function(options) {
 };
 
 
-
-
-exports = module.exports = GoogleCloudPubSubPlugIn;
 exports['@implements'] = 'http://i.bixbyjs.org/ms/ProtocolPlugIn';
 exports['@protocol'] = 'https://pubsub.googleapis.com';
