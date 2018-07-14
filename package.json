@@ -1,5 +1,5 @@
 {
-  "name": "bixby-ms-google",
+  "name": "@modulate/bixby-ms-gcp",
   "version": "0.0.0",
   "description": "Google Cloud Pub/Sub plugin for use with Bixby.js message services.",
   "keywords": [
@@ -17,10 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bixbyjs/bixby-ms-google.git"
+    "url": "git://github.com/modulate/bixby-ms-gcp.git"
   },
   "bugs": {
-    "url": "http://github.com/bixbyjs/bixby-ms-google/issues"
+    "url": "http://github.com/modulate/bixby-ms-gcp/issues"
   },
   "license": "MIT",
   "licenses": [
@@ -31,7 +31,7 @@
   ],
   "main": "./app",
   "assembly": {
-    "namespace": "ms/opt/gcp",
+    "namespace": "io.modulate/cloud/gcp/pubsub",
     "components": [
       "pubsub/protocol"
     ]
@@ -41,8 +41,8 @@
   },
   "devDependencies": {
     "make-node": "^0.3.0",
-    "mocha": "^4.0.1",
-    "chai": "^4.1.1"
+    "mocha": "^4.1.2",
+    "chai": "^5.2.0"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha test/*.test.js"
