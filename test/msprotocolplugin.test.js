@@ -1,11 +1,11 @@
 var $require = require('proxyquire');
 var expect = require('chai').expect;
 var sinon = require('sinon');
-var plugin = require('../app/plugin');
+var plugin = require('../app/msprotocolplugin');
 var pubsub = require('crane-gcp-pubsub');
 
 
-describe('plugin', function() {
+describe('msprotocolplugin', function() {
   
   it('should export constructor', function() {
     expect(plugin).to.be.an('object');
@@ -23,7 +23,7 @@ describe('plugin', function() {
       describe('with location as string', function() {
         var plugin, ConnectionSpy;
         ConnectionSpy = sinon.spy(pubsub.Connection);
-        plugin = $require('../app/plugin',
+        plugin = $require('../app/msprotocolplugin',
           { 'crane-gcp-pubsub': { Connection: ConnectionSpy } });
         
         var connection = plugin.createConnection('https://pubsub.googleapis.com/v1/projects/example/topics/hello');
@@ -51,7 +51,7 @@ describe('plugin', function() {
       describe('with location as option', function() {
         var plugin, ConnectionSpy;
         ConnectionSpy = sinon.spy(pubsub.Connection);
-        plugin = $require('../app/plugin',
+        plugin = $require('../app/msprotocolplugin',
           { 'crane-gcp-pubsub': { Connection: ConnectionSpy } });
         
         var connection = plugin.createConnection({ location: 'https://pubsub.googleapis.com/v1/projects/example/topics/hello' });

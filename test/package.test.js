@@ -12,7 +12,7 @@ describe('@modulate/bixby-ms-gcp', function() {
       expect(json.assembly.namespace).to.equal('io.modulate/cloud/gcp/pubsub');
       
       expect(json.assembly.components).to.have.length(1);
-      expect(json.assembly.components).to.include('plugin');
+      expect(json.assembly.components).to.include('msprotocolplugin');
     });
   });
   
