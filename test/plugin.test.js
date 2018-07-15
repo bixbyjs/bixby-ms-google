@@ -96,7 +96,7 @@ describe('plugin', function() {
         var name = plugin.getName('https://pubsub.googleapis.com/v1/projects/example/topics/hello');
         
         it('should return name', function() {
-          expect(name).to.equal('gcp.pubsub:example');
+          expect(name).to.equal('https://pubsub.googleapis.com/v1/projects/example');
         });
       });
       
@@ -104,7 +104,7 @@ describe('plugin', function() {
         var name = plugin.getName({ location: 'https://pubsub.googleapis.com/v1/projects/example/topics/hello' });
         
         it('should return name', function() {
-          expect(name).to.equal('gcp.pubsub:example');
+          expect(name).to.equal('https://pubsub.googleapis.com/v1/projects/example');
         });
       });
       

@@ -31,7 +31,7 @@ exports.getName = function(options) {
   if (paths[1] !== 'v1' || paths[2] !== 'projects') { return; }
   
   projectId = paths[3];
-  return 'gcp.pubsub:' + projectId;
+  return 'https://pubsub.googleapis.com/v1/projects/' + projectId;
 }
 
 
