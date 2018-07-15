@@ -3,7 +3,7 @@ var uri = require('url')
   , loc = require('../lib/location');
 
 
-exports.createConnection = function(options) {
+exports.createConnection = function(options, readyListener) {
   if (typeof options == 'string') {
     options = { location: options };
   }
@@ -18,6 +18,7 @@ exports.createConnection = function(options) {
   projectId = paths[3];
   conn = new pubsub.Connection({ projectId: projectId });
   conn.location = loc;
+  conn.connect(readyListener);
   return conn;
 };
 

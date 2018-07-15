@@ -66,6 +66,20 @@ describe('plugin', function() {
         });
       });
       
+      describe('with ready listener', function() {
+        var connection;
+        
+        before(function(done) {
+          connection = plugin.createConnection('https://pubsub.googleapis.com/v1/projects/example/topics/hello', function ready() {
+            done();
+          });
+        })
+        
+        it('should return connection', function() {
+          expect(connection).to.be.an.instanceOf(pubsub.Connection);
+        });
+      });
+      
       describe('with invalid protocol', function() {
         var connection = plugin.createConnection('http://pubsub.googleapis.com/v1/projects/example/topics/hello');
     
