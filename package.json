@@ -33,7 +33,7 @@
   "assembly": {
     "namespace": "io.modulate/cloud/gcp/pubsub",
     "components": [
-      "pubsub/protocol"
+      "plugin"
     ]
   },
   "dependencies": {
