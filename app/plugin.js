@@ -4,10 +4,10 @@ var uri = require('url')
 
 exports.createConnection = function(options) {
   if (typeof options == 'string') {
-    options = { url: options };
+    options = { location: options };
   }
   
-  var url = uri.parse(options.url);
+  var url = uri.parse(options.location);
   if (url.protocol !== 'https:' || url.hostname !== 'pubsub.googleapis.com') { return; }
   
   var paths = url.pathname.split('/')
@@ -20,10 +20,10 @@ exports.createConnection = function(options) {
 
 exports.getName = function(options) {
   if (typeof options == 'string') {
-    options = { url: options };
+    options = { location: options };
   }
   
-  var url = uri.parse(options.url);
+  var url = uri.parse(options.location);
   if (url.protocol !== 'https:' || url.hostname !== 'pubsub.googleapis.com') { return; }
   
   var paths = url.pathname.split('/')

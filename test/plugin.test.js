@@ -19,12 +19,32 @@ describe('plugin', function() {
   describe('PlugIn', function() {
     
     describe('.createConnection', function() {
-      var ConnectionSpy = sinon.spy(pubsub.Connection);
-      var plugin = $require('../app/plugin',
-        { 'crane-gcp-pubsub': { Connection: ConnectionSpy } });
       
       describe('with location as string', function() {
+        var plugin, ConnectionSpy;
+        ConnectionSpy = sinon.spy(pubsub.Connection);
+        plugin = $require('../app/plugin',
+          { 'crane-gcp-pubsub': { Connection: ConnectionSpy } });
+        
         var connection = plugin.createConnection('https://pubsub.googleapis.com/v1/projects/example/topics/hello');
+      
+        it('should construct connection', function() {
+          expect(ConnectionSpy).to.have.been.calledOnce;
+          expect(ConnectionSpy).to.have.been.calledWithExactly({ projectId: 'example' });
+        });
+    
+        it('should return connection', function() {
+          expect(connection).to.be.an.instanceOf(pubsub.Connection);
+        });
+      });
+      
+      describe('with location as option', function() {
+        var plugin, ConnectionSpy;
+        ConnectionSpy = sinon.spy(pubsub.Connection);
+        plugin = $require('../app/plugin',
+          { 'crane-gcp-pubsub': { Connection: ConnectionSpy } });
+        
+        var connection = plugin.createConnection({ location: 'https://pubsub.googleapis.com/v1/projects/example/topics/hello' });
       
         it('should construct connection', function() {
           expect(ConnectionSpy).to.have.been.calledOnce;
@@ -74,6 +94,14 @@ describe('plugin', function() {
       
       describe('with location as string', function() {
         var name = plugin.getName('https://pubsub.googleapis.com/v1/projects/example/topics/hello');
+        
+        it('should return name', function() {
+          expect(name).to.equal('gcp.pubsub:example');
+        });
+      });
+      
+      describe('with location as option', function() {
+        var name = plugin.getName({ location: 'https://pubsub.googleapis.com/v1/projects/example/topics/hello' });
         
         it('should return name', function() {
           expect(name).to.equal('gcp.pubsub:example');
