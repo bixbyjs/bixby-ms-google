@@ -68,7 +68,51 @@ describe('plugin', function() {
         });
       });
       
-    }); // #createConnection
+    }); // .createConnection
+    
+    describe('.getName', function() {
+      
+      describe('with location as string', function() {
+        var name = plugin.getName('https://pubsub.googleapis.com/v1/projects/example/topics/hello');
+        
+        it('should return name', function() {
+          expect(name).to.equal('gcp.pubsub:example');
+        });
+      });
+      
+      describe('with invalid protocol', function() {
+        var name = plugin.getName('http://pubsub.googleapis.com/v1/projects/example/topics/hello');
+    
+        it('should not return name', function() {
+          expect(name).to.be.undefined;
+        });
+      });
+      
+      describe('with invalid host', function() {
+        var name = plugin.getName('https://pubsub.example.com/v1/projects/example/topics/hello');
+    
+        it('should not return name', function() {
+          expect(name).to.be.undefined;
+        });
+      });
+    
+      describe('with invalid version', function() {
+        var name = plugin.getName('https://pubsub.googleapis.com/v0/projects/example/topics/hello');
+    
+        it('should not return name', function() {
+          expect(name).to.be.undefined;
+        });
+      });
+    
+      describe('with invalid projects path', function() {
+        var name = plugin.getName('https://pubsub.googleapis.com/v1/invalids/example/topics/hello');
+    
+        it('should not return name', function() {
+          expect(name).to.be.undefined;
+        });
+      });
+      
+    }); // .getName
     
   }); // PlugIn
   
