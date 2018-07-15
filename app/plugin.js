@@ -1,5 +1,6 @@
 var uri = require('url')
-  , pubsub = require('crane-gcp-pubsub');
+  , pubsub = require('crane-gcp-pubsub')
+  , loc = require('../lib/location');
 
 
 exports.createConnection = function(options) {
@@ -11,11 +12,13 @@ exports.createConnection = function(options) {
   if (url.protocol !== 'https:' || url.hostname !== 'pubsub.googleapis.com') { return; }
   
   var paths = url.pathname.split('/')
-    , projectId;  
+    , projectId, conn;
   if (paths[1] !== 'v1' || paths[2] !== 'projects') { return; }
   
   projectId = paths[3];
-  return new pubsub.Connection({ projectId: projectId });
+  conn = new pubsub.Connection({ projectId: projectId });
+  conn.location = loc;
+  return conn;
 };
 
 exports.getName = function(options) {

@@ -36,6 +36,16 @@ describe('plugin', function() {
         it('should return connection', function() {
           expect(connection).to.be.an.instanceOf(pubsub.Connection);
         });
+        
+        describe('parsing location', function() {
+          
+          it('alphabetic topic name', function() {
+            var loc = connection.location.parse('https://pubsub.googleapis.com/v1/projects/example/topics/hello');
+            expect(loc).to.deep.equal({ topic: 'hello' });
+          });
+          
+        }); // parsing location
+        
       });
       
       describe('with location as option', function() {
