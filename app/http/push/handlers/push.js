@@ -2,10 +2,10 @@ exports = module.exports = function(parse) {
   
   
   function respond(req, res, next) {
-    console.log('Google Cloud PubSub Push Delivery');
+    console.log('Google Cloud PubSub Push Delivery X');
     console.log(req.body);
     
-    res.status(200).send();
+    res.status(204).end();
   }
   
   return [

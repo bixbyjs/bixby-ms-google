@@ -58,9 +58,16 @@ describe('http/push/handlers/push', function() {
         chai.express.handler(handler)
           .req(function(req) {
             request = req;
-            //req.body = {
-            //  url: 'http://www.bar.com/'
-            //}
+            req.body = {
+              message: {
+                attributes: {
+                  "key": "value"
+                },
+                data: "SGVsbG8gQ2xvdWQgUHViL1N1YiEgSGVyZSBpcyBteSBtZXNzYWdlIQ==",
+                message_id: "136969346945"
+              },
+              subscription: "projects/myproject/subscriptions/mysubscription"
+            }
           })
           .res(function(res) {
             response = res;
@@ -76,9 +83,8 @@ describe('http/push/handlers/push', function() {
       });
       
       it('should respond', function() {
-        expect(response.statusCode).to.equal(200);
-        //expect(response.getHeader('Content-Type')).to.equal('application/xml')
-        //expect(response.data).to.equal('<?xml version="1.0" encoding="utf-8"?>\n<response>\n  <error>0</error>\n</response>');
+        expect(response.statusCode).to.equal(204);
+        expect(response.data).to.equal(undefined);
       });
     }); // processing a ping
     
