@@ -1,4 +1,4 @@
-exports = module.exports = function(parse) {
+exports = module.exports = function(app, parse) {
   
   
   function respond(req, res, next) {
@@ -15,5 +15,6 @@ exports = module.exports = function(parse) {
 };
 
 exports['@require'] = [
+  'ms/service', // TODO: user an interface here....
   'http://i.bixbyjs.org/http/middleware/parse'
 ];

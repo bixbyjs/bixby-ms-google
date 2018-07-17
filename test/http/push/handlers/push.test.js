@@ -53,7 +53,7 @@ describe('http/push/handlers/push', function() {
       });
       
       before(function(done) {
-        var handler = factory(parse, errorLogging);
+        var handler = factory(undefined, parse, errorLogging);
         
         chai.express.handler(handler)
           .req(function(req) {
