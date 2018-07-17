@@ -37,10 +37,12 @@
     ]
   },
   "dependencies": {
-    "crane-gcp-pubsub": "jaredhanson/crane-gcp-pubsub"
+    "crane-gcp-pubsub": "jaredhanson/crane-gcp-pubsub",
+    "express": "^4.16.3"
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "chai-express-handler": "0.0.3",
     "make-node": "^0.3.0",
     "mocha": "^5.2.0",
     "proxyquire": "^2.0.1",
