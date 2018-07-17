@@ -1,16 +1,25 @@
 exports = module.exports = function(app, parse) {
+  var Message = require('../../../../lib/http/message');
   
   
-  function respond(req, res, next) {
-    console.log('Google Cloud PubSub Push Delivery X');
-    console.log(req.body);
+  function handle(req, res, next) {
+    var data = Buffer.from(req.body.message.data, 'base64')
     
-    res.status(204).end();
+    
+    console.log(req.headers);
+    
+    function done(ok) {
+      if (!ok) { return res.status(500).end(); }
+      return res.status(204).end();
+    }
+    
+    var msg = new Message('test-linkback', data, done);
+    app(msg);
   }
   
   return [
     parse('application/json'),
-    respond
+    handle
   ];
 };
 
