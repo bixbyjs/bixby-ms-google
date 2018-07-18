@@ -8,7 +8,6 @@ exports = module.exports = function(ms) {
     broker.on('ready', function() {
       broker.subscribe('my-sub-linkback');
     });
-    
     return broker;
   };
 };
