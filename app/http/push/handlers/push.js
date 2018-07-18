@@ -5,12 +5,12 @@ exports = module.exports = function(app, parse) {
   function handle(req, res, next) {
     var data = Buffer.from(req.body.message.data, 'base64')
     
-    function done(ok) {
+    function onack(ok) {
       if (!ok) { return res.status(500).end(); }
       return res.status(204).end();
     }
     
-    var msg = new Message('test-linkback', data, done);
+    var msg = new Message('test-linkback', data, onack);
     app(msg);
   }
   
