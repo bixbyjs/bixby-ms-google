@@ -6,7 +6,7 @@ exports = module.exports = function(ms) {
     
     var broker = ms.createConnection(url);
     broker.on('ready', function() {
-      broker.subscribe('my-sub-linkback');
+      broker.consume('my-sub-linkback');
     });
     return broker;
   };

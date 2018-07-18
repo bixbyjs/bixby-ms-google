@@ -27,7 +27,7 @@ describe('app/brokerprovider', function() {
     
     describe('default behavior', function() {
       var connectionObj = new EventEmitter();
-      connectionObj.subscribe = function() {};
+      connectionObj.consume = function() {};
       
       before(function() {
         process.env['GOOGLE_CLOUD_PROJECT'] = 'example';
@@ -57,11 +57,11 @@ describe('app/brokerprovider', function() {
       
       describe('on ready', function() {
         before(function() {
-          sinon.stub(connectionObj, 'subscribe').returns();
+          sinon.stub(connectionObj, 'consume').returns();
         });
         
         after(function() {
-          connectionObj.subscribe.restore();
+          connectionObj.consume.restore();
         });
         
         
@@ -70,9 +70,9 @@ describe('app/brokerprovider', function() {
           process.nextTick(done);
         });
         
-        it('should subscribe', function() {
-          expect(connectionObj.subscribe.callCount).to.equal(1);
-          expect(connectionObj.subscribe.args[0][0]).to.equal('my-sub-linkback');
+        it('should consume', function() {
+          expect(connectionObj.consume.callCount).to.equal(1);
+          expect(connectionObj.consume.args[0][0]).to.equal('my-sub-linkback');
         });
       }); // on ready
       
