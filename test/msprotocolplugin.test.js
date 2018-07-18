@@ -20,7 +20,7 @@ describe('msprotocolplugin', function() {
     
     describe('.createConnection', function() {
       
-      describe('with location as string', function() {
+      describe('with url as string', function() {
         var plugin, ConnectionSpy;
         ConnectionSpy = sinon.spy(pubsub.Connection);
         plugin = $require('../app/msprotocolplugin',
@@ -48,13 +48,13 @@ describe('msprotocolplugin', function() {
         
       });
       
-      describe('with location as option', function() {
+      describe('with url as option', function() {
         var plugin, ConnectionSpy;
         ConnectionSpy = sinon.spy(pubsub.Connection);
         plugin = $require('../app/msprotocolplugin',
           { 'crane-gcp-pubsub': { Connection: ConnectionSpy } });
         
-        var connection = plugin.createConnection({ location: 'https://pubsub.googleapis.com/v1/projects/example/topics/hello' });
+        var connection = plugin.createConnection({ url: 'https://pubsub.googleapis.com/v1/projects/example/topics/hello' });
       
         it('should construct connection', function() {
           expect(ConnectionSpy).to.have.been.calledOnce;
@@ -116,7 +116,7 @@ describe('msprotocolplugin', function() {
     
     describe('.getName', function() {
       
-      describe('with location as string', function() {
+      describe('with url as string', function() {
         var name = plugin.getName('https://pubsub.googleapis.com/v1/projects/example/topics/hello');
         
         it('should return name', function() {
@@ -124,8 +124,8 @@ describe('msprotocolplugin', function() {
         });
       });
       
-      describe('with location as option', function() {
-        var name = plugin.getName({ location: 'https://pubsub.googleapis.com/v1/projects/example/topics/hello' });
+      describe('with url as option', function() {
+        var name = plugin.getName({ url: 'https://pubsub.googleapis.com/v1/projects/example/topics/hello' });
         
         it('should return name', function() {
           expect(name).to.equal('https://pubsub.googleapis.com/v1/projects/example');
